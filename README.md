@@ -1,5 +1,7 @@
 # Detector de Phishing (Cliente)
 
+https://detector-de-phishing.netlify.app/
+
 Se realiza una herramienta para analizar correos electrónicos y capturas sospechosas **100% en el navegador**, sin subir datos a servidores externos. Permite detectar posibles fraudes mediante OCR, análisis de URLs, dominios y palabras de urgencia.
 
 ---
@@ -49,3 +51,6 @@ Este proyecto es un detector de phishing que funciona completamente local en tu 
 - [PDF.js](https://mozilla.github.io/pdf.js/) – Lectura de PDFs
 - [Tesseract.js](https://tesseract.projectnaptha.com/) – OCR de imágenes
 - [Punycode.js](https://github.com/bestiejs/punycode.js/) – Decodificación de dominios IDN
+
+<img width="1090" height="829" alt="image" src="https://github.com/user-attachments/assets/fdcaad93-aaa2-4425-945e-f2e236b8f6b6" />
+
