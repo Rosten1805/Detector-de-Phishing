@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Detector de Phishing — Demo local</title>
+
+  <!-- Fuente -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Librerías de terceros (CDN) -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.5.136/pdf.min.js"></script>
+  <script defer src="https://unpkg.com/tesseract.js@5.1.0/dist/tesseract.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/punycode/2.1.1/punycode.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Detector de Phishing (cliente, sin subir datos)</h1>
+      <span class="badge">Analiza imágenes (OCR), PDFs y texto — 100% local en tu navegador</span>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <h2>1) Sube una captura, PDF o pega el texto del correo</h2>
+        <label class="uploader" id="drop">
+          <input id="file" type="file" multiple accept="image/png,image/jpeg,image/jpg,image/webp,application/pdf, text/plain, .eml" />
+          <div>
+            <p><strong>Arrastra & suelta</strong> o haz clic para seleccionar archivos</p>
+            <p class="formats">Formatos: PDF, JPG, JPEG, PNG, WEBP, TXT, EML (máx. 25MB c/u)</p>
+          </div>
+        </label>
+        <div class="hint">Consejo: para capturas borrosas, intenta recortar solo el correo o aumentar el zoom antes de capturar.</div>
+        <div style="height:10px"></div>
+        <div class="row">
+          <button class="btn" id="analyzeBtn">Analizar ahora</button>
+          <button class="btn secondary" id="clearBtn">Limpiar</button>
+          <span id="status" class="pill">Listo</span>
+        </div>
+        <div style="height:10px"></div>
+        <textarea id="manualText" placeholder="Opcional: pega aquí el contenido del correo (asunto, cuerpo, remitente, enlaces)..."></textarea>
+        <div class="hint">Nada se envía a servidores; todo ocurre en tu navegador.</div>
+      </section>
+
+      <aside class="card">
+        <h2>Resultado</h2>
+        <div class="row" style="justify-content:space-between">
+          <div>
+            <div class="small muted">Riesgo estimado</div>
+            <div id="score" class="score">—</div>
+          </div>
+          <div style="min-width:160px">
+            <div class="small muted">Probabilidad (0–100)</div>
+            <div class="progress"><span id="bar" style="width:0%"></span></div>
+          </div>
+        </div>
+        <div class="chips" id="summaryChips"></div>
+        <div class="list" id="findings"></div>
+        <div class="footer muted">* Heurístico. No es un veredicto definitivo. No puede validar SPF/DKIM/DMARC desde una captura.</div>
+      </aside>
+    </div>
+
+    <section class="card">
+      <h2>Detalle del análisis</h2>
+      <div id="details" class="mono small" style="white-space:pre-wrap"></div>
+    </section>
+
+    <section class="card">
+      <h2>¿Qué comprueba?</h2>
+      <ul class="small">
+        <li>Extracción de texto con OCR (imágenes) y lectura de PDFs.</li>
+        <li>Detección de dominios, correos y URLs (incluye punycode/IDN y posibles homógrafos).</li>
+        <li>Palabras de urgencia/manipulación (es/en) y solicitud de datos sensibles.</li>
+        <li>Acortadores, TLDs poco confiables, dominios con guiones o subdominios engañosos.</li>
+        <li>Diferencia entre nombre mostrado y dominio del remitente (si se proporciona en el texto).</li>
+      </ul>
+    </section>
+
+    <p class="muted small">Desarrollado por Cristina Cañadas Gómez - Limón</p>
+  </div>
+</body>
+</html>

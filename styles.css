@@ -1,0 +1,236 @@
+:root {
+  --bg: #0b1020;
+  --card: #111831;
+  --muted: #8ea0b8;
+  --txt: #eaf0ff;
+
+  --accent: #6be3ff;
+  --accent-2: #8bffb0;
+  --bad: #ff6b6b;
+  --warn: #ffd166;
+  --ok: #2dd4bf;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(120deg, #0b1020, #111831 60%);
+  color: var(--txt);
+}
+
+/* ------------------------------
+Layout principal
+------------------------------ */
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+@media (max-width: 920px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ------------------------------
+Tipografía
+------------------------------ */
+h1 {
+  font-size: clamp(22px, 3vw, 32px);
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: .3px;
+}
+
+h2 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.small { font-size: 12px; }
+.muted { color: var(--muted); }
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+}
+
+/* ------------------------------
+Cards y bloques
+------------------------------ */
+.card {
+  background:
+    radial-gradient(1200px 600px at -10% -20%, rgba(107,227,255,.08), transparent 40%),
+    radial-gradient(800px 600px at 120% 120%, rgba(139,255,176,.08), transparent 40%),
+    var(--card);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  padding: 16px;
+  margin-bottom: 25px;;
+}
+
+
+/* ------------------------------
+Uploader
+------------------------------ */
+.uploader {
+  border: 2px dashed rgba(255,255,255,.18);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: .25s;
+  min-height: 120px; 
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.uploader:hover { border-color: var(--accent); }
+.uploader input { display: none; }
+.formats { font-size: 13px; color: var(--muted); }
+
+/* ------------------------------
+Botones
+------------------------------ */
+.btn {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #072012;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(107,227,255,.35);
+  transition: transform .08s;
+}
+.btn:active { transform: translateY(1px); }
+
+.btn.secondary {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.2);
+  color: var(--txt);
+  box-shadow: none;
+}
+
+/* ------------------------------
+Formularios
+------------------------------ */
+textarea {
+  width: 100%;
+  min-height: 130px;
+  background: #0d142b;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 12px;
+  color: var(--txt);
+  padding: 12px;
+  resize: vertical;
+  font: inherit;
+}
+
+.hint {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* ------------------------------
+Resultados
+------------------------------ */
+.score {
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+.score.bad { color: var(--bad); }
+.score.warn { color: var(--warn); }
+.score.ok { color: var(--ok); }
+
+.progress {
+  height: 6px;
+  background: #0d142b;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.progress > span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+/* ------------------------------
+Listados
+------------------------------ */
+.list {
+  display: grid;
+  gap: 8px;
+  margin: 10px 0;
+}
+.item {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  padding: 10px;
+  border-radius: 12px;
+}
+.item .tag {
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+.tag.bad  { background: rgba(255,107,107,.15);  color:#ffdada; border:1px solid rgba(255,107,107,.35); }
+.tag.warn { background: rgba(255,209,102,.15); color:#fff2cf; border:1px solid rgba(255,209,102,.35); }
+.tag.ok   { background: rgba(45,212,191,.15);  color:#dbfffa; border:1px solid rgba(45,212,191,.35); }
+
+/* ------------------------------
+Chips & etiquetas
+------------------------------ */
+.chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.chip {
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.06);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ------------------------------
+Utilidades
+------------------------------ */
+.row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.pill {
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  border: 1px solid rgba(255,255,255,.18);
+  color: var(--muted);
+}
+
+.footer { opacity: .8; font-size: 12px; }
+.hidden { display: none; }
